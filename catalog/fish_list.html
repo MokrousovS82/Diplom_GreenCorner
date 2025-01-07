@@ -1,0 +1,30 @@
+{% extends "catalog/base.html" %}
+
+{% block content %}
+    <h4>Наши рыбы</h4>
+   {% if fish_list %}
+        <table class="table table-striped table-bordered text-start">
+            <thead>
+                <tr>
+                    <th>Название рыбы</th>
+                    <th>Описание рыбы</th>
+                    <th>Цена, руб/кг</th>
+                    <th>Изображение</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for fish in fish_list.all %}
+            <tr>
+                <td><a href="{{ fish.id }}">{{ fish.name_fish}} </a></td>
+                <td>{{ fish.description }}</td>
+                <td>{{ fish.price }}</td>
+                <td><img src="{{ fish.photo.url }}" alt="connect" style="max-height:100px"></td>
+                <td><a href="{{ fish.photo.url}}" class="btn btn-primary" target="_blank"> Показать</a></td>
+            </tr>
+            {% endfor %}
+            <tbody>
+        </table>
+   {% else %}
+      <p>В базе данных нет рыб</p>
+    {% endif %}
+{% endblock %}

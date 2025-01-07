@@ -1,0 +1,21 @@
+{% extends "catalog/base.html" %}
+
+{% block content %}
+  <div class="container text-start">
+    <div class="row my-2">
+        <h4>{{ object.name_home}}</h4>
+        <p>Описание - {{home.description}}</p>
+        <p>Цена за 1 сутки - {{home.price}} руб.</p>
+        <p>Фото </p>
+        <p><img src="{{ home.photo.url }}" alt="connect" style="max-height:200px"></p>
+        <div class="row my-2">
+          <div class="col-2 my-2">
+             <a href="{{ home.photo.url}}" class="btn btn-primary" target="_blank"> Показать</a>
+          </div>
+        </div>
+      <div class="row my-2">
+             {{home.about}}
+      </div>
+    </div>
+  </div>
+{% endblock %}

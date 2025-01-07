@@ -1,0 +1,30 @@
+{% extends "catalog/base.html" %}
+
+{% block content %}
+    <h4>Наши дома</h4>
+   {% if home_list %}
+        <table class="table table-striped table-bordered text-start">
+            <thead>
+                <tr>
+                    <th>Название дома</th>
+                    <th>Описание дома</th>
+                    <th>Цена, руб/сутки</th>
+                    <th>Изображение</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for home in home_list.all %}
+            <tr>
+                <td><a href="{{ home.id }}">{{ home.name_home}} </a></td>
+                <td>{{ home.description }}</td>
+                <td>{{ home.price }}</td>
+                <td><img src="{{ home.photo.url }}" alt="connect" style="max-height:100px"></td>
+                <td><a href="{{ home.photo.url}}" class="btn btn-primary" target="_blank"> Показать</a></td>
+            </tr>
+            {% endfor %}
+            <tbody>
+        </table>
+   {% else %}
+      <p>В базе данных нет домов</p>
+    {% endif %}
+{% endblock %}
